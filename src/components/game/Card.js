@@ -5,7 +5,7 @@ export default function Card (props){
     // let buttonClassName = 'show-button';
     let buttonName = 'Click to translate';
     let [isActive, setActive] = useState(props.isActive);
-    let [isKnown, setKnown] = useState(props.isKnown);
+    // let [isKnown, setKnown] = useState(props.isKnown);
 
 let classname = props.classname;
 let buttonClassName = props.buttonClassName;

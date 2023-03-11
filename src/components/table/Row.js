@@ -46,10 +46,10 @@ export default function Row(elem){
 
         let i = localWordlist.indexOf(wordToBeDeleted);
         localWordlist.splice(i, 1);
-        // console.log(localWordlist);
         console.log(elemId);
         setValid(false);
         setLocalWordlist(localWordlist);
+        console.log(localWordlist);
     }
 
 

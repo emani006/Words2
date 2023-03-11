@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from './Card'
+import Card from '../Card'
 // import CardFlipFlop from './CardFlipFlop'
 import wordlist from './wordlist'
 // import CardClass from './CardClass'
-import CardMini from './CardMini';
+import CardMini from '../CardMini';
 
 export default class SliderClass extends React.Component {
     constructor(props) {
