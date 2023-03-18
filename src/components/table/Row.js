@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import wordlist from '../wordlist';
+import React, { useState, useContext } from 'react'
+// import wordlist from '../wordlist';
+import {MyContext} from '../../context/MyContext'
 
 export default function Row(elem){
     const [isActive, setActive] = useState(elem.isActive);
@@ -7,9 +8,10 @@ export default function Row(elem){
     const [english, setEnglish] = useState(elem.english);
     const [russian, setRussian] = useState(elem.russian);
     const [transcription, setTranscription] = useState(elem.transcription);
-    let [isValid, setValid] = useState(false);
-    let [localWordlist, setLocalWordlist] = useState(wordlist);
-
+    let [isValid, setValid] = useState(elem.isValid);
+    // let [localWordlist, setLocalWordlist] = useState(wordlist);
+    const {context, setContext} = useContext(MyContext)
+    let [localWordlist, setLocalWordlist] = useState(context);
 
     let rowClassName='table_row';
     let inputClassName='table_row_input';
@@ -41,16 +43,16 @@ export default function Row(elem){
     }
 
 
-    const deleteWord = (elemId) => {
-        let wordToBeDeleted = localWordlist.find(item => item.id === elemId);
+    // const deleteWord = (elemId) => {
+    //     let wordToBeDeleted = localWordlist.find(item => item.id === elemId);
 
-        let i = localWordlist.indexOf(wordToBeDeleted);
-        localWordlist.splice(i, 1);
-        console.log(elemId);
-        setValid(false);
-        setLocalWordlist(localWordlist);
-        console.log(localWordlist);
-    }
+    //     let i = localWordlist.indexOf(wordToBeDeleted);
+    //     localWordlist.splice(i, 1);
+    //     console.log(elemId);
+    //     setValid(false);
+    //     setLocalWordlist(localWordlist);
+    //     console.log(localWordlist);
+    // }
 
 
     const handleTableChange = () => {
@@ -63,9 +65,9 @@ export default function Row(elem){
         let i = localWordlist.indexOf(wordToBeCancelled);
 
 
-        console.log(localWordlist[i].english);
-        console.log(localWordlist[i].russian);
-        console.log(localWordlist[i].transcription);
+        // console.log(localWordlist[i].english);
+        // console.log(localWordlist[i].russian);
+        // console.log(localWordlist[i].transcription);
 
         // возвращение предыдущего сохраненного значения
         if (localWordlist[i].english !== ''){
@@ -96,7 +98,7 @@ export default function Row(elem){
                             </td>
                             <td className='table__cell'>
                                 <button className='table__button e' onClick={handleTableChange}>Edit</button>
-                                <button className='table__button d' onClick={() => deleteWord(elem.id)}>Delete</button>
+                                <button className='table__button d' onClick={() => elem.deleteWord(elem.id)}>Delete</button>
                             </td>
                         </tr>
                 )
@@ -114,7 +116,7 @@ export default function Row(elem){
                             <input name='rus' type='text' required value={russian} onChange={(event) => setRussian(event.target.value)}/>
                         </td>
                         <td className='table__cell'>
-                            <button className='table__button s' disabled={isValid} onClick={changeWord}>Save</button>
+                            <button className='table__button s' disabled={elem.isValid} onClick={changeWord}>Save</button>
                             <button className='table__button c' onClick={cancelAction}>Cancel</button>
                         </td>
                 </tr>

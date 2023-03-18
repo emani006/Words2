@@ -1,10 +1,34 @@
-import React from 'react'
-// import Row1 from './Row';
+import React, { useState, useContext} from 'react'
 import Row from './Row';
-// import wordlist from './wordlist';
+import {MyContext} from '../../context/MyContext'
+
+export default function TableInput() {
+    // export default function TableInput({item}) {
+
+        const {context, setContext} = useContext(MyContext)
+
+    let [localWordlist, setLocalWordlist] = useState(context);
+    let [isValid, setValid] = useState(false);
 
 
-export default function TableInput({item}) {
+
+    const deleteWord = (elemId) => {
+        console.log(elemId);
+        console.log(context);
+        console.log(localWordlist)
+
+        let wordToBeDeleted = localWordlist.find(item => item.id === elemId);
+
+        let i = localWordlist.indexOf(wordToBeDeleted);
+        localWordlist.splice(i, 1);
+        console.log(localWordlist);
+
+        setValid(false);
+        setLocalWordlist(setContext);
+        // setLocalWordlist(localWordlist);
+        console.log(localWordlist);
+        console.log(context);
+    }
 
 
     return (
@@ -20,8 +44,8 @@ export default function TableInput({item}) {
                 </tr> 
             </thead>
             <tbody >
-                {item.map(elem => {
-                    return <Row key={elem.id} id={elem.id} english={elem.english} transcription={elem.transcription} russian={elem.russian} isActive={elem.isActive}></Row>
+                {context.map(elem => {
+                    return <Row key={elem.id} deleteWord={deleteWord} id={elem.id} english={elem.english} transcription={elem.transcription} russian={elem.russian} isActive={elem.isActive}></Row>
                 })}
             </tbody>
         </table>

@@ -4,19 +4,14 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import "./styles/card.css"
 import wordlist from './components/wordlist'
-// import Words from "./components/Words"
-// import Table from "./components/Table"
-// import TableOne from "./components/TableOne"
-// import TableTwo from "./components/TableTwo"
 import NoMatch from './components/NoMatch'
 import TableInput from "./components/table/TableInput";
 import Slider from './components/game/Slider';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
-class App extends React.Component {
+export default function App () {
 
-  render (){
     let arrKnown = [];
     let arrUnknown = [];
 
@@ -31,31 +26,8 @@ class App extends React.Component {
               <Route path="/sign-up" element={''}> Sign-up page</Route> */}
               <Route path="*" element={<NoMatch />} />
             </Routes>
-
-
-          {/* рабочий <div className="cardContainer">
-             рабочий <div className="cardBox"> */}
-                {/* <div className="cardPlace"> */}
-                  {/* <div className="wordPlace"> */}
-                    {/* рабочий <Slider words={wordlist.map(word => {return word})}/> */}
-                  {/* </div> */}
-                {/* </div> */}
-              {/* рабочий </div> */}
-          {/* рабочий </div> */}
-
-          {/* <Words words={wordlist}/> */}
-            {/* <Table key={wordlist.id} words={wordlist}/> */}
-            {/* {wordlist.map(el => {
-              return <TableOne key={el.id} item={el}/>
-            })} */}
-            {/* <TableTwo item={wordlist}/> */}
-
-          {/* рабочая таблица  <TableInput item={wordlist}/> */} 
           <Footer/>
       </div>
       </Router>
     );
   }
-}
-
-export default App;
