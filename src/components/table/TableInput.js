@@ -5,16 +5,16 @@ import {MyContext} from '../../context/MyContext'
 export default function TableInput() {
     // export default function TableInput({item}) {
 
-        const {context, setContext} = useContext(MyContext)
+    const {context, setContext} = useContext(MyContext)
 
     let [localWordlist, setLocalWordlist] = useState(context);
     let [isValid, setValid] = useState(false);
 
 
-
     const deleteWord = (elemId) => {
         console.log(elemId);
         console.log(context);
+        setLocalWordlist(context);
         console.log(localWordlist)
 
         let wordToBeDeleted = localWordlist.find(item => item.id === elemId);
@@ -25,8 +25,8 @@ export default function TableInput() {
 
         setValid(false);
         setLocalWordlist(setContext);
-        // setLocalWordlist(localWordlist);
-        console.log(localWordlist);
+
+        // setContext(localWordlist);
         console.log(context);
     }
 
