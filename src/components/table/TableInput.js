@@ -24,11 +24,11 @@ export default function TableInput() {
         console.log(localWordlist);
 
         setValid(false);
-        setLocalWordlist(setContext);
-
         // setContext(localWordlist);
-        console.log(context);
+        setLocalWordlist(setContext);
+        console.log(localWordlist);
     }
+
 
 
     return (
@@ -44,7 +44,7 @@ export default function TableInput() {
                 </tr> 
             </thead>
             <tbody >
-                {context.map(elem => {
+                {context?.map(elem => {
                     return <Row key={elem.id} deleteWord={deleteWord} id={elem.id} english={elem.english} transcription={elem.transcription} russian={elem.russian} isActive={elem.isActive}></Row>
                 })}
             </tbody>

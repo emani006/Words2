@@ -10,9 +10,11 @@ export default function Slider(props) {
     const [current, setCurrent] = useState(0);
     const [wordCount, setWordCount] = useState(0);
     const [wordsLearnedArray] = useState([]);
-    const [isKnown, setKnown] = useState(props.isKnown);
+    const [isKnown, setKnown] = useState('');
+    // const [isLearned, setLearned] = useState(false);
     const [arrKnown, setArrKnown] = useState(props.arrKnown);
     const [arrUnknown, setArrUnknown] = useState(props.arrUnknown);
+    // const [isKnown, setKnown] = useState(props.isKnown);
 
     // css классы для компонента Card
     const classname = 'show-mean';
@@ -20,10 +22,11 @@ export default function Slider(props) {
 
     const [items] = useState (props.words);
 
-
     // слово знакомое/незнакомое
-    const switchCard = (kind, isKnown) => {    
-        isKnown = kind;
+    const switchCard = (kind) => {  
+        // isKnown = kind;  
+        setKnown(kind);
+        // console.log(isKnown)
         // items[current].isKnown = kind;
         let knownWord = arrKnown.includes(items[current]);
         let unknownWord = arrUnknown.includes(items[current]);
@@ -89,6 +92,7 @@ export default function Slider(props) {
                 wordsLearnedArray.pop(items[current]);
             }
     }
+
 
 
     return (

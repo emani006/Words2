@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CardMini(props,ref) {
+export default function CardMini(props) {
     let classname = 'show-mean';
     let buttonName = 'Click to translate';
         

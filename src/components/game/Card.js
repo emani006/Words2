@@ -3,12 +3,14 @@ import React, {useState, useRef, useEffect}  from 'react'
 export default function Card (props){
     // let classname = 'show-mean';
     // let buttonClassName = 'show-button';
-    let buttonName = 'Click to translate';
-    let [isActive, setActive] = useState(props.isActive);
+    // let [isActive, setActive] = useState(props.isActive);
     // let [isKnown, setKnown] = useState(props.isKnown);
 
-let classname = props.classname;
-let buttonClassName = props.buttonClassName;
+    let buttonName = 'Click to translate';
+    let [isActive, setActive] = useState(false);
+
+    let classname = props.classname;
+    let buttonClassName = props.buttonClassName;
 
 
     const handleClick = () => {
